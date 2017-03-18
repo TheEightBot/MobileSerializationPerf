@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{111B0327-90E4-4BEB-B5DB-1A050712EA38}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>SimpleSpeedTester.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Events\NewTestOutcomeEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Events\NewTestResultEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Events\NewTestResultSummaryEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\OutcomeFilters\DefaultTestOutcomeFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\OutcomeFilters\ExcludeMinAndMaxTestOutcomeFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Test.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\TestGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\TestOutcome.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\TestResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\TestResultSummary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ITest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ITestGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ITestOutcomeFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ITestResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ITestResultSummary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Core\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Interfaces\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Properties\" />
+  </ItemGroup>
+</Project>

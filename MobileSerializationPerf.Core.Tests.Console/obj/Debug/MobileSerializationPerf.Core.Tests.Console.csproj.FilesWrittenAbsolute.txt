@@ -1,0 +1,9 @@
+/Users/mstonis/Development/MobileSerializationPerf/MobileSerializationPerf.Core.Tests.Console/obj/Debug/.NETFramework,Version=v4.6.AssemblyAttribute.cs
+/Users/mstonis/Development/MobileSerializationPerf/MobileSerializationPerf.Core.Tests.Console/bin/Debug/MobileSerializationPerf.Core.Tests.Console.dll.mdb
+/Users/mstonis/Development/MobileSerializationPerf/MobileSerializationPerf.Core.Tests.Console/bin/Debug/MobileSerializationPerf.Core.Tests.Console.dll
+/Users/mstonis/Development/MobileSerializationPerf/MobileSerializationPerf.Core.Tests.Console/obj/Debug/MobileSerializationPerf.Core.Tests.Console.dll
+/Users/mstonis/Development/MobileSerializationPerf/MobileSerializationPerf.Core.Tests.Console/obj/Debug/MobileSerializationPerf.Core.Tests.Console.dll.mdb
+/Users/mstonis/Development/MobileSerializationPerf/MobileSerializationPerf.Core.Tests.Console/bin/Debug/nunit.framework.dll
+/Users/mstonis/Development/MobileSerializationPerf/MobileSerializationPerf.Core.Tests.Console/bin/Debug/NBench.dll
+/Users/mstonis/Development/MobileSerializationPerf/MobileSerializationPerf.Core.Tests.Console/bin/Debug/MobileSerializationPerf.Core.dll
+/Users/mstonis/Development/MobileSerializationPerf/MobileSerializationPerf.Core.Tests.Console/bin/Debug/MobileSerializationPerf.Core.dll.mdb

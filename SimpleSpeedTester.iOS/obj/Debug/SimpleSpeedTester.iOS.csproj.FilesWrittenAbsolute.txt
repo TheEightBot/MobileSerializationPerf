@@ -1,0 +1,6 @@
+/Users/mstonis/Development/MobileSerializationPerf/SimpleSpeedTester.iOS/obj/Debug/Xamarin.iOS,Version=v1.0.AssemblyAttribute.cs
+/Users/mstonis/Development/MobileSerializationPerf/SimpleSpeedTester.iOS/obj/Debug/optimized/
+/Users/mstonis/Development/MobileSerializationPerf/SimpleSpeedTester.iOS/bin/Debug/SimpleSpeedTester.iOS.dll.mdb
+/Users/mstonis/Development/MobileSerializationPerf/SimpleSpeedTester.iOS/bin/Debug/SimpleSpeedTester.iOS.dll
+/Users/mstonis/Development/MobileSerializationPerf/SimpleSpeedTester.iOS/obj/Debug/SimpleSpeedTester.iOS.dll
+/Users/mstonis/Development/MobileSerializationPerf/SimpleSpeedTester.iOS/obj/Debug/SimpleSpeedTester.iOS.dll.mdb

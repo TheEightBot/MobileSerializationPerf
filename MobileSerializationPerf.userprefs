@@ -1,0 +1,37 @@
+﻿<Properties StartupConfiguration="{4F29B025-6977-4140-A0C7-6E1A6F739AEB}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MobileSerializationPerf.Core.Tests/TestsSample.cs">
+    <Files>
+      <File FileName="MobileSerializationPerf.Core.Tests/TestsSample.cs" Line="26" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MobileSerializationPerf" expanded="True">
+            <Node name="MobileSerializationPerf.Core" expanded="True" />
+            <Node name="MobileSerializationPerf.Core.Tests" expanded="True">
+              <Node name="TestsSample.cs" selected="True" />
+            </Node>
+            <Node name="MobileSerializationPerf.Core.Tests.Droid" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="MobileSerializationPerf" expanded="True">
+            <Node name="MobileSerializationPerf.Core.Tests.Console" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/mstonis/Development/MobileSerializationPerf/MobileSerializationPerf.Core.Tests/TestsSample.cs" relfile="MobileSerializationPerf.Core.Tests/TestsSample.cs" line="26" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.MobileSerializationPerf.Core.Tests.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.A832D1AA-02ED-4503-8FF5-E71D30A8E61C" />
+  <MonoDevelop.Ide.ItemProperties.MobileSerializationPerf.Core.Tests.Console PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
