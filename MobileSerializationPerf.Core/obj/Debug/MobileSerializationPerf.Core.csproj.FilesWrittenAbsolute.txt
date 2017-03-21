@@ -1,5 +1,0 @@
-/Users/mstonis/Development/MobileSerializationPerf/MobileSerializationPerf.Core/obj/Debug/.NETPortable,Version=v4.5,Profile=Profile78.AssemblyAttribute.cs
-/Users/mstonis/Development/MobileSerializationPerf/MobileSerializationPerf.Core/bin/Debug/MobileSerializationPerf.Core.dll.mdb
-/Users/mstonis/Development/MobileSerializationPerf/MobileSerializationPerf.Core/bin/Debug/MobileSerializationPerf.Core.dll
-/Users/mstonis/Development/MobileSerializationPerf/MobileSerializationPerf.Core/obj/Debug/MobileSerializationPerf.Core.dll
-/Users/mstonis/Development/MobileSerializationPerf/MobileSerializationPerf.Core/obj/Debug/MobileSerializationPerf.Core.dll.mdb
