@@ -12,7 +12,7 @@ using NUnit.Framework;
 using SimpleSpeedTester.Core;
 using SimpleSpeedTester.Core.OutcomeFilters;
 
-namespace MobileSerializationPerf.Core.Tests.Droid
+namespace MobileSerializationPerf.Core.Tests
 {
     [TestFixture]
     public class TestsSample
@@ -38,6 +38,38 @@ namespace MobileSerializationPerf.Core.Tests.Droid
                 .RuleFor(x => x.List, f => Enumerable.Range(0, 100).Select(_ => f.Random.Int(0, 100)).ToList());
 
             var faked = faker.Generate();
+
+            RunTestsOn(faked);
+
+            Assert.Pass();
+        }
+
+        [Test]
+        public void ListOf1000PersonTests()
+        {
+            var faker = new Faker<Person>()
+                .RuleFor(x => x.Age, f => f.Random.Int(10, 65))
+                .RuleFor(x => x.FirstName, f => f.Person.FirstName)
+                .RuleFor(x => x.LastName, f => f.Person.LastName)
+                .RuleFor(x => x.List, f => Enumerable.Range(0, 100).Select(_ => f.Random.Int(0, 100)).ToList());
+
+            var faked = Enumerable.Range(0, 1000).Select(_ => faker.Generate()).ToList();
+
+            RunTestsOn(faked);
+
+            Assert.Pass();
+        }
+
+        [Test]
+        public void ListOf10000PersonTests()
+        {
+            var faker = new Faker<Person>()
+                .RuleFor(x => x.Age, f => f.Random.Int(10, 65))
+                .RuleFor(x => x.FirstName, f => f.Person.FirstName)
+                .RuleFor(x => x.LastName, f => f.Person.LastName)
+                .RuleFor(x => x.List, f => Enumerable.Range(0, 100).Select(_ => f.Random.Int(0, 100)).ToList());
+
+            var faked = Enumerable.Range(0, 10000).Select(_ => faker.Generate()).ToList();
 
             RunTestsOn(faked);
 
