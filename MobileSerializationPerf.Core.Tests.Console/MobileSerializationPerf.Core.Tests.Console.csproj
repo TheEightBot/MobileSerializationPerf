@@ -35,14 +35,39 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="ZeroFormatter.Interfaces">
+      <HintPath>..\packages\ZeroFormatter.Interfaces.1.6.4\lib\net45\ZeroFormatter.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ZeroFormatter">
+      <HintPath>..\packages\ZeroFormatter.1.6.4\lib\net45\ZeroFormatter.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="protobuf-net">
+      <HintPath>..\packages\protobuf-net.2.1.0\lib\net451\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Wire">
+      <HintPath>..\packages\Wire.0.8.2\lib\net45\Wire.dll</HintPath>
+    </Reference>
+    <Reference Include="Bogus">
+      <HintPath>..\packages\Bogus.11.0.4\lib\net40\Bogus.dll</HintPath>
+    </Reference>
+    <Reference Include="KellermanSoftware.Compare-NET-Objects">
+      <HintPath>..\packages\CompareNETObjects.3.06.0.0\lib\net46\KellermanSoftware.Compare-NET-Objects.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="AppReadme\Compare-NET-Objects-Help.chm" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileSerializationPerf.Core\MobileSerializationPerf.Core.csproj">
       <Project>{B7BF4DBB-F116-4558-9B82-BD8D2A84D1CD}</Project>
       <Name>MobileSerializationPerf.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleSpeedTester\SimpleSpeedTester.csproj">
+      <Project>{87B76A3E-3932-47F1-924D-C80A1AE92787}</Project>
+      <Name>SimpleSpeedTester</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="..\MobileSerializationPerf.Core.Tests\MobileSerializationPerf.Core.Tests.projitems" Label="Shared" Condition="Exists('..\MobileSerializationPerf.Core.Tests\MobileSerializationPerf.Core.Tests.projitems')" />

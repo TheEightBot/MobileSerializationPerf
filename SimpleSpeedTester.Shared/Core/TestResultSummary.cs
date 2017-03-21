@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using SimpleSpeedTester.Interfaces;
 
 namespace SimpleSpeedTester.Core
@@ -19,6 +20,14 @@ namespace SimpleSpeedTester.Core
             if (eligibleOutcomes.Any())
             {
                 AverageExecutionTime = eligibleOutcomes.Average(o => o.Elapsed.TotalMilliseconds);
+
+                MinExecutionTime = eligibleOutcomes.Min(o => o.Elapsed.TotalMilliseconds);
+
+                MaxExecutionTime = eligibleOutcomes.Max(o => o.Elapsed.TotalMilliseconds);
+
+                var sum = eligibleOutcomes.Sum(x => (x.Elapsed.TotalMilliseconds - AverageExecutionTime) * (x.Elapsed.TotalMilliseconds - AverageExecutionTime));
+
+                StandardDeviation = Math.Sqrt(sum / eligibleOutcomes.Count());
             }            
         }        
 
@@ -33,9 +42,15 @@ namespace SimpleSpeedTester.Core
         public int Failures { get; private set; }
 
         /// <summary>
-        /// THe average execution time in milliseconds
+        /// The average execution time in milliseconds
         /// </summary>
         public double AverageExecutionTime { get; private set; }
+
+        public double MinExecutionTime { get; set; }
+
+        public double MaxExecutionTime { get; set; }
+
+        public double StandardDeviation { get; set; }
 
         /// <summary>
         /// The test result this summary corresponds to
@@ -44,16 +59,15 @@ namespace SimpleSpeedTester.Core
 
         public override string ToString()
         {
-            return string.Format(
-@"Test Group [{0}], Test [{1}] results summary:
-Successes   [{2}]
-Failures    [{3}] 
-Average Exec Time [{4}] milliseconds", 
-                        TestResult.Test.TestGroup,
-                        TestResult.Test,
-                        Successes,
-                        Failures,
-                        AverageExecutionTime);
+            return 
+                $"Test Group [{TestResult.Test.TestGroup}], " +
+                $"\tTest [{TestResult.Test}] results summary:\n" +
+                $"\tSuccesses   [{Successes}]\n" +
+                $"\tFailures    [{Failures}] \n" +
+                $"\tMin Exec Time - [{MinExecutionTime}] milliseconds\n" +
+                $"\tMax Exec Time - [{MaxExecutionTime}] milliseconds\n" +
+                $"\tAverage Exec Time - [{AverageExecutionTime}] milliseconds\n" +
+                $"\tStandard Deviation Exec Time - [{StandardDeviation}] milliseconds";
         }
     }
 }

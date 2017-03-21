@@ -9,6 +9,6 @@
     <Import_RootNamespace>MobileSerializationPerf.Core.Tests</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)TestsSample.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PerformanceTests.cs" />
   </ItemGroup>
 </Project>

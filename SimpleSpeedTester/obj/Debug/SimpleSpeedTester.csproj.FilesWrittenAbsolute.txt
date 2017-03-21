@@ -1,5 +1,0 @@
-/Users/mstonis/Development/MobileSerializationPerf/SimpleSpeedTester/obj/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
-/Users/mstonis/Development/MobileSerializationPerf/SimpleSpeedTester/bin/Debug/SimpleSpeedTester.dll.mdb
-/Users/mstonis/Development/MobileSerializationPerf/SimpleSpeedTester/bin/Debug/SimpleSpeedTester.dll
-/Users/mstonis/Development/MobileSerializationPerf/SimpleSpeedTester/obj/Debug/SimpleSpeedTester.dll
-/Users/mstonis/Development/MobileSerializationPerf/SimpleSpeedTester/obj/Debug/SimpleSpeedTester.dll.mdb

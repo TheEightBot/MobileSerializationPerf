@@ -3,4 +3,3 @@
 /Users/mstonis/Development/MobileSerializationPerf/MobileSerializationPerf.Core/bin/Debug/MobileSerializationPerf.Core.dll
 /Users/mstonis/Development/MobileSerializationPerf/MobileSerializationPerf.Core/obj/Debug/MobileSerializationPerf.Core.dll
 /Users/mstonis/Development/MobileSerializationPerf/MobileSerializationPerf.Core/obj/Debug/MobileSerializationPerf.Core.dll.mdb
-/Users/mstonis/Development/MobileSerializationPerf/MobileSerializationPerf.Core/bin/Debug/Newtonsoft.Json.dll
