@@ -130,44 +130,47 @@ namespace MobileSerializationPerf.Core.Tests
             Assert.Pass();
         }
 
-        void RunTestsOn<T>(T objectToTest) {
+        void RunTestsOn<T>(T objectToTest, int numberOfRuns = 100, bool skipSerializedOutput = false) {
             var sbOutput = new StringBuilder();
             StringBuilder sbTemp = null;
 
-            sbTemp = PerformSerializationTests("BinaryFormatter", objectToTest, SerializeWithBinaryFormatter, DeserializeWithBinaryFormatter<T>);
+            sbTemp = PerformSerializationTests("BinaryFormatter", objectToTest, SerializeWithBinaryFormatter, DeserializeWithBinaryFormatter<T>, numberOfRuns, true);
             sbOutput.AppendLine(sbTemp.ToString());
 
-            sbTemp = PerformSerializationTests("XmlSerializer", objectToTest, SerializeWithXmlSerializer, DeserializeWithXmlSerializer<T>);
+            sbTemp = PerformSerializationTests("XmlSerializer", objectToTest, SerializeWithXmlSerializer, DeserializeWithXmlSerializer<T>, numberOfRuns, skipSerializedOutput);
             sbOutput.AppendLine(sbTemp.ToString());
 
-            sbTemp = PerformSerializationTests("DataContractSerializer", objectToTest, SerializeWithDataContractSerializer, DeserializeWithDataContractSerializer<T>);
+            sbTemp = PerformSerializationTests("DataContractSerializer", objectToTest, SerializeWithDataContractSerializer, DeserializeWithDataContractSerializer<T>, numberOfRuns, skipSerializedOutput);
             sbOutput.AppendLine(sbTemp.ToString());
 
-            sbTemp = PerformSerializationTests("NetDataContractSerializer", objectToTest, SerializeWithNetDataContractSerializer, DeserializeWithNetDataContractSerializer<T>);
+            sbTemp = PerformSerializationTests("NetDataContractSerializer", objectToTest, SerializeWithNetDataContractSerializer, DeserializeWithNetDataContractSerializer<T>, numberOfRuns, skipSerializedOutput);
             sbOutput.AppendLine(sbTemp.ToString());
 
-            sbTemp = PerformSerializationTests("DataContractJsonSerializer", objectToTest, SerializeWithDataContractJsonSerializer, DeserializeWithDataContractJsonSerializer<T>);
+            sbTemp = PerformSerializationTests("DataContractJsonSerializer", objectToTest, SerializeWithDataContractJsonSerializer, DeserializeWithDataContractJsonSerializer<T>, numberOfRuns, skipSerializedOutput);
             sbOutput.AppendLine(sbTemp.ToString());
 
-            sbTemp = PerformSerializationTests("Json.Net BSON", objectToTest, SerializeWithJsonNetBson, DeserializeWithJsonNetBson<T>);
+            sbTemp = PerformSerializationTests("Json.Net BSON", objectToTest, SerializeWithJsonNetBson, DeserializeWithJsonNetBson<T>, numberOfRuns, true);
             sbOutput.AppendLine(sbTemp.ToString());
 
-            sbTemp = PerformSerializationTests("Json.Net JSON", objectToTest, SerializeWithJsonNet, DeserializeWithJsonNet<T>);
+            sbTemp = PerformSerializationTests("Json.Net JSON", objectToTest, SerializeWithJsonNet, DeserializeWithJsonNet<T>, numberOfRuns, skipSerializedOutput);
             sbOutput.AppendLine(sbTemp.ToString());
 
-            sbTemp = PerformSerializationTests("MsgPack", objectToTest, SerializeWithMsgPack, DeserializeWithMsgPack<T>);
+            sbTemp = PerformSerializationTests("NetJSON", objectToTest, SerializeWithNetJson, DeserializeWithNetJson<T>, numberOfRuns, skipSerializedOutput);
             sbOutput.AppendLine(sbTemp.ToString());
 
-            sbTemp = PerformSerializationTests("ProtoBuf", objectToTest, SerializeWithProtobuf, DeserializeWithProtobuf<T>);
+            //TODO: I can't get ServiceStack to work. What am I doing wrong here???
+            sbTemp = PerformSerializationTests("ServiceStack.Text", objectToTest, SerializeWithServiceStackText, DeserializeWithServiceStackText<T>, numberOfRuns, skipSerializedOutput);
+            sbOutput.AppendLine(sbTemp.ToString());
+
+            sbTemp = PerformSerializationTests("MsgPack", objectToTest, SerializeWithMsgPack, DeserializeWithMsgPack<T>, numberOfRuns, skipSerializedOutput);
+            sbOutput.AppendLine(sbTemp.ToString());
+
+            sbTemp = PerformSerializationTests("ProtoBuf", objectToTest, SerializeWithProtobuf, DeserializeWithProtobuf<T>, numberOfRuns, skipSerializedOutput);
             sbOutput.AppendLine(sbTemp.ToString());
             //TODO: I am pretty sure that this is using Reflection.Emit and it is not gonna work
             //PerformSerializationTests("Jil", objectToTest, SerializeWithJil, DeserializeWithJil<T>);
 
-            //TODO: I can't get ServiceStack to work. What am I doing wrong here???
-            sbTemp = PerformSerializationTests("ServiceStack.Text", objectToTest, SerializeWithServiceStackText, DeserializeWithServiceStackText<T>);
-            sbOutput.AppendLine(sbTemp.ToString());
-
-            sbTemp = PerformSerializationTests("ZeroFormatter", objectToTest, SerializeWithZeroFormatter, DeserializeWithZeroFormatter<T>);
+            sbTemp = PerformSerializationTests("ZeroFormatter", objectToTest, SerializeWithZeroFormatter, DeserializeWithZeroFormatter<T>, numberOfRuns, skipSerializedOutput);
             sbOutput.AppendLine(sbTemp.ToString());
 
             Console.Write(sbOutput.ToString());
@@ -177,7 +180,8 @@ namespace MobileSerializationPerf.Core.Tests
         StringBuilder PerformSerializationTests<T>(
             string nameOfSerializser, T objectToTest, 
             Func<T, byte[]> serializationToPerform, Func<byte[], T> deserializationToPerform,
-            int numberOfRuns = 100
+            int numberOfRuns = 100,
+            bool skipSerializedOutput = false
         ) {
             var sb = new StringBuilder();
 
@@ -192,12 +196,20 @@ namespace MobileSerializationPerf.Core.Tests
             {
                 var testGroup = new TestGroup($"Tests for {nameOfSerializser}");
 
-                var serializationTitle = $"{nameOfSerializser} Serialization";
-                var deserializationTitle = $"{nameOfSerializser} Deserialization";
+                var serializationTitle = $"+ {nameOfSerializser} Serialization +";
+                var deserializationTitle = $"+ {nameOfSerializser} Deserialization +";
                 var serializationTest = testGroup.Plan(serializationTitle, () => serializationToPerform(objectToTest), numberOfRuns);
                 var serializationTestSummary = serializationTest?.GetResult()?.GetSummary(new ExcludeMinAndMaxTestOutcomeFilter());
 
                 serialized = serializationToPerform(objectToTest);
+
+                if (!skipSerializedOutput)
+                {
+                    sb.AppendLine("+ Serialized Value +");
+                    sb.AppendLine(Encoding.UTF8.GetString(serialized));
+                    sb.AppendLine();
+                }
+
                 var deserialized = deserializationToPerform(serialized);
                 var compareResults = ObjectComparer.Compare(objectToTest, deserialized);
 
@@ -212,11 +224,11 @@ namespace MobileSerializationPerf.Core.Tests
                 sb.AppendLine(deserializationTestSummary?.ToString());
                 sb.AppendLine();
 
-                sb.AppendLine("SERIALIZED SIZE");
+                sb.AppendLine("+ Serialized Size +");
                 sb.AppendLine($"{serialized.Length} bytes");
                 sb.AppendLine();
 
-                sb.AppendLine("DIFFERENCES");
+                sb.AppendLine("+ Differences +");
                 sb.AppendLine(compareResults.DifferencesString);
                 sb.AppendLine();
             }
@@ -455,6 +467,24 @@ namespace MobileSerializationPerf.Core.Tests
             return ZeroFormatter.ZeroFormatterSerializer.Deserialize<T>(bytes);
         }
 
+        static byte[] SerializeWithNetJson<T>(T obj)
+        {
+            using (var memStream = new MemoryStream())
+            using (var sw = new StreamWriter(memStream))
+            {
+                NetJSON.NetJSON.Serialize(obj, sw);
+                sw.Flush();
+                return memStream.ToArray();
+            }
+        }
 
+        static T DeserializeWithNetJson<T>(byte[] bytes)
+        {
+            using (var memStream = new MemoryStream(bytes))
+            using (var sr = new StreamReader(memStream))
+            {
+                return NetJSON.NetJSON.Deserialize<T>(sr);
+            }
+        }
     }
 }
