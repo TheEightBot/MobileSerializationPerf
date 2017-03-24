@@ -28,6 +28,8 @@ namespace SimpleSpeedTester.Core
                 var sum = eligibleOutcomes.Sum(x => (x.Elapsed.TotalMilliseconds - AverageExecutionTime) * (x.Elapsed.TotalMilliseconds - AverageExecutionTime));
 
                 StandardDeviation = Math.Sqrt(sum / eligibleOutcomes.Count());
+
+                TotalExecutionTime = eligibleOutcomes.Sum(o => o.Elapsed.TotalMilliseconds);
             }            
         }        
 
@@ -52,6 +54,8 @@ namespace SimpleSpeedTester.Core
 
         public double StandardDeviation { get; set; }
 
+        public double TotalExecutionTime { get; set; }
+
         /// <summary>
         /// The test result this summary corresponds to
         /// </summary>
@@ -60,14 +64,15 @@ namespace SimpleSpeedTester.Core
         public override string ToString()
         {
             return 
-                $"Test Group [{TestResult.Test.TestGroup}], " +
-                $"\tTest [{TestResult.Test}] results summary:\n" +
-                $"\tSuccesses   [{Successes}]\n" +
-                $"\tFailures    [{Failures}] \n" +
-                $"\tMin Exec Time - [{MinExecutionTime}] milliseconds\n" +
-                $"\tMax Exec Time - [{MaxExecutionTime}] milliseconds\n" +
-                $"\tAverage Exec Time - [{AverageExecutionTime}] milliseconds\n" +
-                $"\tStandard Deviation Exec Time - [{StandardDeviation}] milliseconds";
+                $"Test Group [{TestResult.Test.TestGroup}]," + Environment.NewLine +
+                $"\tTest [{TestResult.Test}] results summary:" + Environment.NewLine +
+                $"\tSuccesses   [{Successes}]" + Environment.NewLine +
+                $"\tFailures    [{Failures}]" + Environment.NewLine +
+                $"\tMin Exec Time - [{MinExecutionTime}] milliseconds" + Environment.NewLine +
+                $"\tMax Exec Time - [{MaxExecutionTime}] milliseconds" + Environment.NewLine +
+                $"\tAverage Exec Time - [{AverageExecutionTime}] milliseconds" + Environment.NewLine +
+                $"\tStandard Deviation Exec Time - [{StandardDeviation}] milliseconds" + Environment.NewLine +
+                $"\tTotal Exec Time - [{TotalExecutionTime}] milliseconds - [{TimeSpan.FromMilliseconds(TotalExecutionTime).TotalSeconds}] seconds";
         }
     }
 }
